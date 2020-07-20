@@ -2,14 +2,12 @@ class Player
 
    attr_reader :name, :lives
 
-  def initialize()
-    puts "What's your name?"
-    @name = gets.chomp
+  def initialize(name)
+    @name = name
     @lives = 3
-    puts "Babe, you've got #{lives} left"
   end
 
-  def player_lives
+  def losingalife
     @lives -=1
   end
 
@@ -28,6 +26,3 @@ class Player
 #     @player_2 = 3
 #     puts "#{@player_1} you have #{"
 end 
-
-newPlayer = Player.new
-newPlayer.player_lives

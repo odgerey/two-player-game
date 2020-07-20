@@ -21,17 +21,20 @@
 # end
 
 class Game
-  # first_num = rand(1...20)
-  # second_num = rand(1...20)
 
-  def question()
+  def initialize(p1,p2) 
+    @p1 = p1
+    @p2 = p2
+    @current_player = p1
+  end 
+
+  def question  
     @first_num = rand(1...20)
     @second_num = rand(1...20)
     # @operators = [:+, :-,:*]
     # @rand_operator = @operators.sample
-    @question = "What does #{@first_num} plus #{@second_num} equal?"
-    puts @question
-    @userAnswer = gets.chomp.to_i
+    puts "What does #{@first_num} plus #{@second_num} equal?"
+    
     # case @operators.sample
     # when "+"
     #   answer = @first_num.to_i + @second_num.to_i
@@ -40,17 +43,39 @@ class Game
     # when "*"
     #   answer = @first_num.to_i * @second_num.to_i
     # end
-    @answer = @first_num.to_i + @second_num.to_i
-    if @userAnswer != @answer
-      puts "Nah dawg, seriously."
-    else 
-      puts "Hip hip hourray, you're smart!" 
-    end
   end
+  
+  def validate(answer)
+    is_answer_correct = answer == @first_num.to_i + @second_num.to_i
+    if is_answer_correct  
+      puts "Hip hip hourray, you're smart!" 
+      puts "You haven't lost a life this time."
+
+    else 
+      puts "You're an idiot."
+      @current_player.losingalife
+      @current_player = @p1 == @current_player ? @p2 : @p1 
+
+    
+    end
+  end 
+
+  def gamecontinue?
+    if @p1.lives <=0 || @p2.lives <= 0
+      return false 
+    else
+      return true
+    end
+  end  
+
+  def endGame
+    puts "GAME OVER!"
+  end 
+
+      
 
 
 end
 
-newGame = Game.new
-newGame.question
+
 
