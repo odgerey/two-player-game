@@ -27,11 +27,19 @@ class Game
   def question()
     @first_num = rand(1...20)
     @second_num = rand(1...20)
-    @operators = [:+, :-,:*]
+    # @operators = [:+, :-,:*]
     # @rand_operator = @operators.sample
-    @question = "What does #{@first_num} #{@operators.sample} #{@second_num} equal?"
+    @question = "What does #{@first_num} plus #{@second_num} equal?"
     puts @question
     @userAnswer = gets.chomp.to_i
+    # case @operators.sample
+    # when "+"
+    #   answer = @first_num.to_i + @second_num.to_i
+    # when "-"
+    #   answer = @first_num.to_i - @second_num.to_i
+    # when "*"
+    #   answer = @first_num.to_i * @second_num.to_i
+    # end
     @answer = @first_num.to_i + @second_num.to_i
     if @userAnswer != @answer
       puts "Nah dawg, seriously."
@@ -39,7 +47,10 @@ class Game
       puts "Hip hip hourray, you're smart!" 
     end
   end
+
+
 end
 
 newGame = Game.new
 newGame.question
+
