@@ -21,21 +21,25 @@
 # end
 
 class Game
-  first_num = rand(1...20)
-  second_num = rand(1...20)
+  # first_num = rand(1...20)
+  # second_num = rand(1...20)
 
-  # Def Quest
-  question = "Player:1 What does #{first_num} plus #{second_num} equal?"
-  puts question
-  answer = gets.chomp.to_i
-
-  # Def Answer
-  add = first_num.to_i + second_num.to_i
-
-  if answer != add
-    puts "Nah dawg, seriously."
-  else 
-    puts "Hip hip hourray, you're smart!"
+  def question()
+    @first_num = rand(1...20)
+    @second_num = rand(1...20)
+    @operators = [:+, :-,:*]
+    # @rand_operator = @operators.sample
+    @question = "What does #{@first_num} #{@operators.sample} #{@second_num} equal?"
+    puts @question
+    @userAnswer = gets.chomp.to_i
+    @answer = @first_num.to_i + @second_num.to_i
+    if @userAnswer != @answer
+      puts "Nah dawg, seriously."
+    else 
+      puts "Hip hip hourray, you're smart!" 
+    end
   end
-  
 end
+
+newGame = Game.new
+newGame.question
